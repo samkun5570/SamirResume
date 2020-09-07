@@ -132,12 +132,36 @@
             </div>
           </div>
           <br />
-        
-
-
+          <div class="w3-content w3-margin-top" style="max-width: 1400px">
+            <div class="w3-container w3-card w3-white w3-margin-bottom">
+              <h2 class="w3-text-grey w3-padding-16">
+                <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Get In Touch
+              </h2>
+              <div class="w3-container">
+                <h5 class="w3-opacity">
+                  <b>Please fill the form below </b>
+                </h5>
+               <form action="">
+                  <label for="user_name"><h6 class="w3-text-blue">Name : </h6></label>
+                  <input type="text" name="user_name" id="user_name"><br>
+                  <label for="user_subject"><h6 class="w3-text-blue">Subject : </h6></label>
+                  <input type="text" name="user_subject" id="user_subject"><br>
+                  <label for="user_email"><h6 class="w3-text-blue">Email : </h6></label>
+                  <input type="email" name="user_email" id="user_email"><br>
+                  <label for="user_phone"><h6 class="w3-text-blue">Phone : </h6></label>
+                  <input type="tel" name="user_phone" id="user_phone"><br>
+                  <label for="user_msg"><h6 class="w3-text-blue">Message : </h6></label>
+                  <input type="text" name="user_msg" id="user_msg"><br>
+                  <br>
+                  <button id="done" style="text-align-last: center;">Done</button>
+                  <br>
+                  <br>
+               </form>
+              </div>
+            </div>
+          </div>
           <!-- End Left Column -->
         </div>
-
         <!-- Right Column -->
         <div class="w3-twothird">
           <div class="w3-container w3-card w3-white w3-margin-bottom">
@@ -386,6 +410,9 @@
       </div>
       <!-- End Page Container -->
     </div>
+
+    </div>
+
     <footer class="w3-container w3-teal w3-center w3-margin-top">
       <p>Find me on social media.</p>
       <!-- <i class="fa fa-facebook-official w3-hover-opacity"></i> -->
@@ -399,5 +426,63 @@
         ><i class="fa fa-linkedin w3-hover-opacity"></i
       ></a>
     </footer>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDjFp9mI7-y6sL84euaa_fwdEUVTZRSLlA",
+    authDomain: "samirresume-36e89.firebaseapp.com",
+    databaseURL: "https://samirresume-36e89.firebaseio.com",
+    projectId: "samirresume-36e89",
+    storageBucket: "samirresume-36e89.appspot.com",
+    messagingSenderId: "950458462276",
+    appId: "1:950458462276:web:6ad07c27d1b60e7303cc11",
+    measurementId: "G-PPV9YH2JXD"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  let user_name = document.getElementById('user_name');
+  let user_subject = document.getElementById('user_subject');
+  let user_email = document.getElementById('user_email');
+  let user_phone = document.getElementById('user_phone');
+  let user_msg = document.getElementById('user_msg');
+  const button = document.getElementById('done');
+  // const database = firebase.database();
+  // const db = firebase.database().ref();
+  const databaseRef = firebase.database().ref('users');
+
+  button.addEventListener('click',e=>{
+    e.preventDefault();
+    // database.ref('/users/'+user_email.value).set({
+        //Declare a function that increment a counter in a transaction
+  function getId() {
+    var counterRef = firebase.database().ref('counter');
+    return counterRef.transaction(function(currentId) {
+      return currentId + 1;
+    });
+  }
+  getId().then(function(transactionResult) {
+    var newId = transactionResult.snapshot.val();
+    console.log(newId);
+    databaseRef.child(newId).set({
+        //Call the asynchronous getID() function
+        user_name : user_name.value,
+        user_subject : user_subject.value,
+        user_email : user_email.value,
+        user_phone : user_phone.value,
+        user_msg : user_msg.value
+    });  
+  }); 
+     
+  });
+</script>
   </body>
 </html>
