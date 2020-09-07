@@ -479,8 +479,19 @@
         user_email : user_email.value,
         user_phone : user_phone.value,
         user_msg : user_msg.value
-    });  
-  }); 
+    }).then(()=>{
+      user_name.value=" ";
+        user_subject.value=" ";
+        user_email.value=" ";
+        user_phone.value=" ";
+        user_msg.value=" ";
+        alert("submitted , Thank You ");
+    })
+        
+    
+  });
+  
+   
      
   });
 </script>
