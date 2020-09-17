@@ -11,6 +11,7 @@
   <meta
     name="Description"
     content="Resume of samir dey a python,javascript and android developer explaining experiences and skill set."/>
+ 
   <link rel="icon" href="IMG_468.jpg" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -426,6 +427,7 @@
         ><i class="fa fa-linkedin w3-hover-opacity"></i
       ></a>
     </footer>
+ <script src="https://smtpjs.com/v3/smtp.js"></script> 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
 
@@ -486,7 +488,18 @@
         user_phone.value=" ";
         user_msg.value=" ";
         alert("submitted , Thank You ");
-    })
+    }).then	Email.send({
+				Host: "smtp.gmail.com",
+				Username : "<sender’s email address>",
+				Password : "<email password>",
+				To : '<recipient’s email address>',
+				From : "<sender’s email address>",
+				Subject : "<email subject>",
+				Body : "<email body>",
+			})
+			.then(function(message){
+				alert("mail sent successfully")
+			});
         
     
   });
