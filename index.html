@@ -476,12 +476,12 @@
     console.log(newId);
 	Email.send({
 		Host: "smtp.gmail.com",
-		Username : "<sender’s email address>",
+		Username : "samirdey5570@gmail.com",
 				Password : "<email password>",
 				To : 'samirdey5570@gmail.com',
 				From : "samirdey5570@gmail.com",
 				Subject : `resume review contact ${user_subject.value}`,
-				Body : `username ${user_name.value} email ${user_email.value}  user_phone ${user_phone.value}  user_msg ${}`,
+				Body : `username ${user_name.value} email ${user_email.value}  user_phone ${user_phone.value}  user_msg ${user_msg.value}`,
 			}).then(message=>{
 				alert("mail sent successfully",message)
 			});
