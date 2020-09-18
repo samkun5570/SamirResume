@@ -32,6 +32,9 @@
     h6 {
       font-family: "Roboto", sans-serif;
     }
+form input{
+      	width:100%;
+}
   </style>
   <body class="w3-light-grey">
     <!-- Page Container -->
@@ -474,17 +477,17 @@
   getId().then(function(transactionResult) {
     var newId = transactionResult.snapshot.val();
     console.log(newId);
-	Email.send({
-		Host: "smtp.gmail.com",
-		Username : "samirdey5570@gmail.com",
-				Password : "<email password>",
-				To : 'samirdey5570@gmail.com',
-				From : "samirdey5570@gmail.com",
-				Subject : `resume review contact ${user_subject.value}`,
-				Body : `username ${user_name.value} email ${user_email.value}  user_phone ${user_phone.value}  user_msg ${user_msg.value}`,
-			}).then(message=>{
-				alert("mail sent successfully",message)
-			});
+// 	Email.send({
+// 		Host: "smtp.gmail.com",
+// 		Username : "samirdey5570@gmail.com",
+// 				Password : "<email password>",
+// 				To : 'samirdey5570@gmail.com',
+// 				From : "samirdey5570@gmail.com",
+// 				Subject : `resume review contact ${user_subject.value}`,
+// 				Body : `username ${user_name.value} email ${user_email.value}  user_phone ${user_phone.value}  user_msg ${user_msg.value}`,
+// 			}).then(message=>{
+// 				alert("mail sent successfully",message)
+// 			});
     databaseRef.child(newId).set({
         //Call the asynchronous getID() function
         user_name : user_name.value,
