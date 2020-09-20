@@ -35,6 +35,9 @@
 form input{
       	width:100%;
 }
+  .w3-display-container img{
+	transition:.2s;
+  }
 .caption{
 	position:absolute;
 	top:0;
@@ -50,11 +53,15 @@ form input{
 	opacity:0;
 	transition:.2s;
 }
+  .w3-display-container{
+	  overflow:hidden;
+  }
 .w3-display-container:hover .caption{
 	opacity:1;
 }
 	  .w3-display-container:hover img{
-	transform:scale(1.1);
+	transform:scale(1.1) rotate(10deg);
+		  
 }
   </style>
   <body class="w3-light-grey">
